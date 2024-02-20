@@ -29,7 +29,7 @@ const Login = () => {
         localStorage.setItem('driverToken', data.token); // Antag att token finns i data.token
         
         // Navigera till dashboard
-        navigate('/LandingPage'); 
+        navigate('/landing'); 
       } else {
         // Felhantering, visa ett felmeddelande
         alert('Inloggning misslyckades. Försök igen.');
