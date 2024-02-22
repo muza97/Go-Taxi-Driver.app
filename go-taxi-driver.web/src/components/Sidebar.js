@@ -14,6 +14,8 @@ const Sidebar = () => {
       <Link to="/balance">Balance Reports</Link>
       <Link to="/tax">Tax Reports</Link>
       <Link to="/guide">Guides & FAQ</Link>
+      <Link to="/contact">Contact</Link>
+
       <LogoutButton />
     </div>
   );

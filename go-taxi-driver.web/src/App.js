@@ -14,6 +14,7 @@ import BalanceReports from './pages/BalanceReports.js';
 import TaxReports from './pages/TaxReports.js';
 import GuidesFAQ from './pages/GuidesFAQ.js';
 import Sidebar from  "./components/Sidebar.js";
+import Contact from './/pages/Contact';
 import './App.css'
 
 const App = () => {
@@ -41,6 +42,8 @@ const App = () => {
               <Route path="/balance" element={<BalanceReports />} />
               <Route path="/tax" element={<TaxReports />} />
               <Route path="/guide" element={<GuidesFAQ />} />
+              <Route path="/contact" element={<Contact />} />
+
               </Routes>
         </div>
       </div>
