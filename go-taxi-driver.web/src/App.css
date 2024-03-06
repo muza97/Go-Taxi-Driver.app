@@ -13,7 +13,8 @@
 .AppBar {
   width: 100%; 
   z-index: 1100;
-  margin-bottom: 0; 
+  margin-bottom: 0;
+  background-color: #ca9802;  
 }
 
 .sidebar {
@@ -62,7 +63,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #191970; 
+  background-color: #ffffff; 
 }
 
 .contact-container {
@@ -114,7 +115,7 @@
 }
 
 .contact-form button:hover {
-  background: #003d82;
+  background: #fffb0f;
 }
 
 /* Responsive design */

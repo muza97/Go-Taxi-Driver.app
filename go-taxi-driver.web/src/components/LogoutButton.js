@@ -11,7 +11,7 @@ const LogoutButton = () => {
         localStorage.removeItem('driverToken');
         
         // Omdirigera användaren till inloggningssidan
-        navigate('/login');
+        navigate('/');
     };
 
     return (

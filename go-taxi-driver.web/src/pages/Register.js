@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Paper, Typography, Snackbar } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
+import '../dist/styles.css'; 
 
 const Register = () => {
   const [account, setAccount] = useState({
@@ -41,7 +42,7 @@ const Register = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Driver registered successfully:', data);
-        navigate("/login");
+        navigate("/");
       } else {
         setSnackbarMessage('Registrering misslyckades. Försök igen.');
         setOpenSnackbar(true);
