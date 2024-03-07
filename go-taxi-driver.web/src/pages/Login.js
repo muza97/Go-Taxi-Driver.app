@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TextField, Button, Paper, Typography } from '@material-ui/core';
+import { TextField, Button, Paper, Typography, AppBar, Toolbar, Link } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom'; // Importera useNavigate
 import '../dist/styles.css'; 
+import '../style/login.css'
 import { useAuth } from '../auth/AuthContext';
 
 const Login = () => {
@@ -42,6 +43,12 @@ const Login = () => {
 
 
   return (
+    <>
+    <AppBar position="static">
+      <Toolbar>
+      <Button color="inherit" component={Link} to="/">Login</Button>
+      </Toolbar>
+    </AppBar>
     
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
       <h1 className="text-center text-5xl font-medium text-gray-900 mb-4">Driver Login</h1>
@@ -109,6 +116,7 @@ const Login = () => {
     </div>
     </div>
     </div>
+    </>
   );
 };
 

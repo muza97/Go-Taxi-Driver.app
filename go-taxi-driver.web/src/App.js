@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate, useLocation } from 'react-router-dom';
 import Login from './pages/Login.js';
 import Register from './pages/Register';
 import { AppBar, Toolbar, Button } from '@material-ui/core';
@@ -19,6 +19,7 @@ import './App.css'
 import './dist/styles.css'; 
 import { AuthProvider } from './auth/AuthContext.js';
 import PrivateRoute from './auth/PrivateRoute.js';
+import Layout from "./components/Layout.js"
 
 
 
@@ -27,33 +28,28 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <AppBar position="static">
-          <Toolbar>
-            <Button color="inherit" component={Link} to="/">Login</Button>
-          </Toolbar>
-        </AppBar>
-        <div className="app">
-          <Sidebar />
-          <div className="content">
+        
+       
+        
+          
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
-
-              <Route path="/landing" element={<PrivateRoute><div>Home</div></PrivateRoute>} />
-              <Route path="/landing" element={<PrivateRoute><Landing /></PrivateRoute>} />
-              <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-              <Route path="/document" element={<PrivateRoute><MyDocuments /></PrivateRoute>} />
-              <Route path="/rides" element={<PrivateRoute><MyRides /></PrivateRoute>} />
-              <Route path="/vehicles" element={<PrivateRoute><Vehicles /></PrivateRoute>} />
-              <Route path="/riderinvoice" element={<PrivateRoute><RiderInvoices /></PrivateRoute>} />
-              <Route path="/balance" element={<PrivateRoute><BalanceReports /></PrivateRoute>} />
-              <Route path="/tax" element={<PrivateRoute><TaxReports /></PrivateRoute>} />
-              <Route path="/guide" element={<PrivateRoute><GuidesFAQ /></PrivateRoute>} />
-              <Route path="/contact" element={<PrivateRoute><Contact /></PrivateRoute>} />
-
+            
+              <Route path="/landing" element={<PrivateRoute><Layout><div>Home</div></Layout></PrivateRoute>} />
+              <Route path="/landing" element={<PrivateRoute><Layout><Landing /></Layout></PrivateRoute>} />
+              <Route path="/profile" element={<PrivateRoute><Layout><Profile /></Layout></PrivateRoute>} />
+              <Route path="/document" element={<PrivateRoute><Layout><MyDocuments /></Layout></PrivateRoute>} />
+              <Route path="/rides" element={<PrivateRoute><Layout><MyRides /></Layout></PrivateRoute>} />
+              <Route path="/vehicles" element={<PrivateRoute><Layout><Vehicles /></Layout></PrivateRoute>} />
+              <Route path="/riderinvoice" element={<PrivateRoute><Layout></Layout><RiderInvoices /></PrivateRoute>} />
+              <Route path="/balance" element={<PrivateRoute><Layout><BalanceReports /></Layout></PrivateRoute>} />
+              <Route path="/tax" element={<PrivateRoute><Layout><TaxReports /></Layout></PrivateRoute>} />
+              <Route path="/guide" element={<PrivateRoute><Layout><GuidesFAQ /></Layout></PrivateRoute>} />
+              <Route path="/contact" element={<PrivateRoute><Layout><Contact /></Layout></PrivateRoute>} />
+              
               </Routes>
-        </div>
-      </div>
+
     </Router>
     </AuthProvider>
   );

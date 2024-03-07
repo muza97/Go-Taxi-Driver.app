@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Paper, Typography, Snackbar } from '@material-ui/core';
+import { TextField, Button, Paper, Typography, Snackbar, AppBar, Toolbar, Link } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 import '../dist/styles.css'; 
 
@@ -56,6 +56,13 @@ const Register = () => {
   };
 
   return (
+    <>
+    <AppBar position="static">
+    <Toolbar>
+    <Button color="inherit" component={Link} to="/">Login</Button>
+    </Toolbar>
+  </AppBar>
+  
     <Paper style={{ padding: 16 }}>
       <Typography variant="h5">Registrera</Typography>
       <form onSubmit={handleSubmit}>
@@ -70,6 +77,7 @@ const Register = () => {
       </form>
       <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} message={snackbarMessage} />
     </Paper>
+    </>
   );
 };
 
