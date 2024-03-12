@@ -36,10 +36,10 @@ const App = () => {
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
             
-              <Route path="/landing" element={<PrivateRoute><Layout><div>Home</div></Layout></PrivateRoute>} />
-              <Route path="/landing" element={<PrivateRoute><Layout><Landing /></Layout></PrivateRoute>} />
-              <Route path="/profile" element={<PrivateRoute><Layout><Profile /></Layout></PrivateRoute>} />
-              <Route path="/document" element={<PrivateRoute><Layout><MyDocuments /></Layout></PrivateRoute>} />
+              <Route path="/landing" element={<Layout><div>Home</div></Layout>} />
+              <Route path="/landing" element={<Layout><Landing /></Layout>} />
+              <Route path="/profile" element={<Layout><Profile /></Layout>} />
+              <Route path="/document" element={<Layout><MyDocuments /></Layout>} />
               <Route path="/rides" element={<PrivateRoute><Layout><MyRides /></Layout></PrivateRoute>} />
               <Route path="/vehicles" element={<PrivateRoute><Layout><Vehicles /></Layout></PrivateRoute>} />
               <Route path="/riderinvoice" element={<PrivateRoute><Layout></Layout><RiderInvoices /></PrivateRoute>} />

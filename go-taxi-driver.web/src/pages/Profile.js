@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Paper, Typography, TextField, Button } from '@material-ui/core';
+import '../dist/styles.css'; 
 
 const Profile = () => {
   const [user, setUser] = useState({
