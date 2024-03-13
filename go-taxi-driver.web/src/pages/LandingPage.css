@@ -1,0 +1,23 @@
+.Container {
+    display: flex;
+    flex-direction: column; /* Ställ in huvudcontainer i kolumnläge för att placera firstContainer över secondContainer */
+}
+
+.firstContainer, .secondContainer {
+    display: flex; /* Använd flexbox för att placera innehållet inuti varje container */
+    justify-content: center; /* Centrera innehållet horisontellt */
+}
+
+.secondContainer {
+    justify-content: space-between; /* Placera innehållet i secondContainer så att det är jämnt fördelat */
+}
+
+.StaticText, .Earnings, .WorkHours {
+    width: 30%; /* Bredden på varje del i secondContainer */
+    border: 1px solid black; /* Ram runt varje del för att skilja dem åt */
+    padding: 10px; /* Lägg till lite utfyllnad för att göra innehållet mer läsbart */
+    margin: 10px; /* Lägg till lite marginal runt varje del för att skapa utrymme mellan dem */
+}
+
+    
+
