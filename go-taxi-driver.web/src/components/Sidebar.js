@@ -14,8 +14,19 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 
 
 const Sidebar = () => {
+  const user = {
+    name: 'User\'s Full Name',
+    avatar: process.env.PUBLIC_URL + '/ayo-ogunseinde-sibVwORYqs0-unsplash.jpg'// replace with actual path to user's avatar image
+  };
+
   return (
     <div className="sidebar">
+      <div className="user-profile">
+        <img src={user.avatar} alt="Profile" className="profile-pic" />
+        <div className="user-info">
+          <p className="user-name">{user.name}</p>
+        </div>
+        </div>
       <Link to="/landing"><HomeIcon /> Home</Link>
       <Link to="/profile"><PersonIcon /> Profile</Link>
       <Link to="/document"><DescriptionIcon /> My Documents</Link>

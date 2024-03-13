@@ -15,9 +15,15 @@ const LogoutButton = () => {
     };
 
     return (
-        <Button className="logoutButton" onClick={handleLogout}>
-            Logga ut
-        </Button>
+        
+        <Button 
+        type="submit" 
+        color="primary" 
+        variant="contained" 
+        fullWidth
+        style={{ backgroundColor: '#005d09', color: 'white' }}>
+        Log Out
+      </Button>
     );
 };
 

@@ -27,21 +27,54 @@
   display: flex; 
   flex-direction: column; 
   height: 100vh; 
-  background-color: #282c34; 
+  background-color: #ffffff; 
   padding-top: 1em; 
   padding-bottom: o;
   margin-bottom: o;
 }
+.logoutButton {
+  background-color: #006400; /* Dark green color */
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
 
 .sidebar a {
-  color: white; 
+  color: rgb(0, 0, 0); 
   padding: 15px; 
   text-decoration: none; 
   display: block; 
 }
 
 .sidebar a:hover {
-  background-color: #555; 
+  background-color: #b7a7a7; 
+}
+.sidebar .user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd; /* Add a line to separate the profile from the links */
+}
+
+.sidebar .profile-pic {
+  width: 80px; /* Or whatever size you want */
+  height: 80px; /* Make sure this is the same as the width for a circle */
+  border-radius: 50%; /* This will make the image round */
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.sidebar .user-info .user-name,
+.sidebar .user-info .user-email {
+  color: #333; /* This is a dark color for the text */
+  text-align: center; /* Center the text */
 }
 
 
@@ -63,7 +96,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #ffffff; 
+  background-color: #01860f; 
 }
 
 .contact-container {

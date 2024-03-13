@@ -77,12 +77,51 @@ const Register = () => {
           </div>
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Input fields */}
-            <TextField name="name" label="Name" fullWidth margin="normal" value={account.name} onChange={handleChange} />
-            <TextField name="email" label="E-mail" fullWidth margin="normal" value={account.email} onChange={handleChange} />
-            <TextField name="password" label="Password" type="password" fullWidth margin="normal" value={account.password} onChange={handleChange} />
-            <TextField name="phoneNumber" label="Phonenumber" fullWidth margin="normal" value={account.phoneNumber} onChange={handleChange} />
-            <TextField name="licenseNumber" label="License Number" fullWidth margin="normal" value={account.licenseNumber} onChange={handleChange} />
-            <TextField name="vehicle" label="Vehicle" fullWidth margin="normal" value={account.vehicle} onChange={handleChange} />
+            <input
+              type="email"
+              name="email"
+              onChange={handleChange}
+              value={account.email}
+              placeholder="E-mail"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              onChange={handleChange}
+              value={account.password}
+              placeholder="Password"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+            <input
+              type="phoneNumber"
+              name="Phonenumber"
+              onChange={handleChange}
+              value={account.phoneNumber}
+              placeholder="Phonenumber"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+            <input
+              type="licenseNumber"
+              name="License Number"
+              onChange={handleChange}
+              value={account.licenseNumber}
+              placeholder="License Number"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+            <input
+              type="vehicle"
+              name="Vehicle"
+              onChange={handleChange}
+              value={account.vehicle}
+              placeholder="Vehicle"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
             <Button 
               type="submit" 
               color="primary" 
