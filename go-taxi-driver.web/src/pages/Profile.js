@@ -10,7 +10,7 @@ const Profile = () => {
     name: 'User Name',
     email: 'User@example.com',
     phoneNumber: '0701234567',
-    licenseNumber: 'ABC123',
+    licenseNumber: 'ABC123'
   });
   const [editMode, setEditMode] = useState(false);
 
@@ -68,10 +68,10 @@ const Profile = () => {
             />
             </div>
             <div>
-            <label htmlFor="phonenumber" className="block text-sm font-semibold text-gray-700">Phonenumber</label>
+            <label htmlFor="phoneNumber" className="block text-sm font-semibold text-gray-700">Phonenumber</label>
         <input
               type="phoneNumber"
-              name="phonenumber"
+              name="phoneNumber"
               onChange={handleInputChange}
               value={user.phoneNumber}
               placeholder="Phonenumber"
@@ -80,10 +80,10 @@ const Profile = () => {
             />
             </div>
             <div>
-            <label htmlFor="licensenumber" className="block text-sm font-semibold text-gray-700">Licensenumber</label>
+            <label htmlFor="licenseNumber" className="block text-sm font-semibold text-gray-700">Licensenumber</label>
         <input
               type="licenseNumber"
-              name="licensenumber"
+              name="licenseNumber"
               onChange={handleInputChange}
               value={user.licenseNumber}
               placeholder="Licensenumber"
