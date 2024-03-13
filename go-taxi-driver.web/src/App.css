@@ -28,7 +28,7 @@
   flex-direction: column; 
   height: 100vh; 
   background-color: #ffffff; 
-  padding-top: 1em; 
+  padding-top: 0; 
   padding-bottom: o;
   margin-bottom: o;
 }
@@ -47,25 +47,25 @@
 
 .sidebar a {
   color: rgb(0, 0, 0); 
-  padding: 15px; 
+  padding: 12px; 
   text-decoration: none; 
   display: block; 
 }
 
 .sidebar a:hover {
-  background-color: #b7a7a7; 
+  background-color: #bab7b7; 
 }
 .sidebar .user-profile {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   padding: 20px;
-  border-bottom: 1px solid #ddd; /* Add a line to separate the profile from the links */
+
 }
 
 .sidebar .profile-pic {
-  width: 80px; /* Or whatever size you want */
-  height: 80px; /* Make sure this is the same as the width for a circle */
+  width: 50px; /* Or whatever size you want */
+  height: 50px; /* Make sure this is the same as the width for a circle */
   border-radius: 50%; /* This will make the image round */
   margin-bottom: 10px;
   object-fit: cover;
@@ -74,9 +74,18 @@
 .sidebar .user-info .user-name,
 .sidebar .user-info .user-email {
   color: #333; /* This is a dark color for the text */
-  text-align: center; /* Center the text */
+  text-align: between; /* Center the text */
 }
 
+
+.logo-container {
+  width: 100%;
+  /* Remove the border-bottom line */
+  padding: 0rem 0.5rem; /* Adjust the padding to suit your design */
+  background: #fff; /* Set background color if necessary */
+  
+   
+}
 
 .content {
   margin-left: 250px;

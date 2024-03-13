@@ -32,7 +32,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://api-focnoae3da-uc.a.run.app/api/register/driver', {
+      const response = await fetch('https://125f-90-230-123-227.ngrok-free.app/api/register/driver', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const Register = () => {
         <button
           className="font-bold py-2 px-4 rounded"
           style={{ backgroundColor: themeColors.bgColor(1), color: themeColors.text }}
-          onClick={() => navigate('/landing')}
+          onClick={() => navigate('/')}
         >
           Log in
         </button>
@@ -97,7 +97,7 @@ const Register = () => {
             />
             <input
               type="phoneNumber"
-              name="Phonenumber"
+              name="phoneNumber"
               onChange={handleChange}
               value={account.phoneNumber}
               placeholder="Phonenumber"
@@ -106,16 +106,16 @@ const Register = () => {
             />
             <input
               type="licenseNumber"
-              name="License Number"
+              name="licenseNumber"
               onChange={handleChange}
               value={account.licenseNumber}
-              placeholder="License Number"
+              placeholder="LicenseNumber"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
             <input
               type="vehicle"
-              name="Vehicle"
+              name="vehicle"
               onChange={handleChange}
               value={account.vehicle}
               placeholder="Vehicle"

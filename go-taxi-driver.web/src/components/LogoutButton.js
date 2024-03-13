@@ -21,7 +21,7 @@ const LogoutButton = () => {
         color="primary" 
         variant="contained" 
         fullWidth
-        style={{ backgroundColor: '#005d09', color: 'white' }}>
+        style={{ backgroundColor: '#01860f', color: 'white' }}>
         Log Out
       </Button>
     );

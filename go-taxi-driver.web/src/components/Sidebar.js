@@ -21,6 +21,11 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
+  {/* Logo container at the very top */}
+  <div className="logo-container">
+    <Link to="/" className="font-semibold text-xl text-gray-900">City Cab</Link>
+  </div>
+
       <div className="user-profile">
         <img src={user.avatar} alt="Profile" className="profile-pic" />
         <div className="user-info">
