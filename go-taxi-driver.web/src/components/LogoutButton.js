@@ -17,7 +17,7 @@ const LogoutButton = () => {
     return (
         
         <Button 
-        type="submit" 
+        onClick={handleLogout} 
         color="primary" 
         variant="contained" 
         fullWidth

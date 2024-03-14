@@ -32,7 +32,7 @@ const Vehicles = () => {
 
   return (
     <Paper style={{ padding: 16 }}>
-      <Typography variant="h5">Mina Fordon</Typography>
+      <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mina Fordon</h2>
       <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
        
         <input 

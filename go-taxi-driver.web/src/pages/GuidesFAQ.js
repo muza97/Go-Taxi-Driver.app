@@ -3,6 +3,7 @@ import { Paper, Typography, Button, Accordion, AccordionSummary, AccordionDetail
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AndroidIcon from '@material-ui/icons/Android';
 import AppleIcon from '@material-ui/icons/Apple';
+import '../style/GuidesFAQ.css'
 
 const GuidesFAQ = () => {
   // Du kan ha din FAQ-data och guider i en stat eller hämta från en API
@@ -15,35 +16,49 @@ const GuidesFAQ = () => {
   ];
 
   return (
-    <Paper style={{ padding: '20px', margin: '20px' }}>
-      <Typography variant="h4">Guider & FAQ</Typography>
-      
-      <Typography variant="h6">Driver App Guides</Typography>
-      <List>
-        {/* Loopa igenom guider här */}
-        <ListItem>
-          <ListItemText primary="Driver App Step-by-Step tutorial" />
-          <Button>Read More</Button>
-        </ListItem>
-        {/* ... fler guider */}
-      </List>
-      
-      <Typography variant="h6">Driver FAQ</Typography>
-      {faqs.map((faq, index) => (
-        <Accordion key={index}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>{faq.question}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>{faq.answer}</Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
-      
-      <Typography variant="h6">Download the App</Typography>
-      <Button startIcon={<AndroidIcon />} component="a" href="www.android.com">Android App</Button>
-      <Button startIcon={<AppleIcon />} component="a" href="www.apple.com" color="default">iPhone App</Button>
-    </Paper>
+    <div className="container guides-faq">
+      <div className="header text-left">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Guider & FAQ</h2>
+      </div>
+
+      <div className="content">
+        <h3 className="subheading">Driver App Guides</h3>
+        {/* Replace List with div structure */}
+        <div className="guides">
+          <div className="guide">
+            <span>Driver App Step-by-Step tutorial</span>
+            <button className="read-more-button">Read More</button>
+          </div>
+          {/* Add more guides as needed */}
+        </div>
+
+        <h3 className="subheading">Driver FAQ</h3>
+        {/* Keep the Accordion for FAQs */}
+        {faqs.map((faq, index) => (
+          <div className="faq-item" key={index}>
+            <div className="faq-question">
+              <span>{faq.question}</span>
+              <ExpandMoreIcon />
+            </div>
+            <div className="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+
+        <h3 className="subheading">Download the App</h3>
+        <div className="download-buttons">
+          <button className="android-app-button">
+            <AndroidIcon />
+            Android App
+          </button>
+          <button className="iphone-app-button">
+            <AppleIcon />
+            iPhone App
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

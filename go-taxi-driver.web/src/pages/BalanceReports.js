@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, List, ListItem, ListItemText, Button, Typography } from '@material-ui/core';
+import '../style/Reports.css'
 
 const BalanceReports = () => {
   const [reports, setReports] = useState([]);
@@ -22,24 +23,29 @@ const BalanceReports = () => {
   };
 
   return (
-    <Paper style={{ padding: '20px', margin: '20px' }}>
-      <Typography variant="h5">Balansrapporter</Typography>
-      <List>
-        {reports.map((report) => (
-          <ListItem key={report.id} divider>
-            <ListItemText primary={`Period: ${report.period}`} />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleDownload(report.id)}
-            >
-              Ladda ner PDF
-            </Button>
-          </ListItem>
+    <div className="container balance-reports">
+      <div className="header text-left">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Balansrapporter</h2>
+      </div>
+      <div className="reports-table">
+        {/* Replace List and ListItem with div structure */}
+        {reports.map((report, index) => (
+          <div className="table-row" key={index}>
+            <div className="table-cell">{`Period: ${report.period}`}</div>
+            <div className="table-cell button-cell">
+              <button
+                className="download-button"
+                onClick={() => handleDownload(report.id)}
+              >
+                Ladda ner PDF
+              </button>
+            </div>
+          </div>
         ))}
-      </List>
-    </Paper>
+      </div>
+    </div>
   );
 };
+
 
 export default BalanceReports;

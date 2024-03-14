@@ -37,10 +37,10 @@ const Profile = () => {
       <div className="bg-white p-30 min-w-md w-full mx-auto">
 
      
-      <h1 className="mt-2 text-3xl font-semibold text-gray-900">My Profile</h1>
+      <h2 className="text-3xl font-extrabold text-gray-900 mb-4">My Profile</h2>
       
       <div className="text-left">
-      <p className="font-medium text-primary-600 hover:text-primary-500">Manage your personal information</p>  
+      <p className="mb-10 text-gray-600">Manage your personal information</p>  
           </div>
       <form className="space-y-10" onSubmit={handleSaveProfile}>
       <div>

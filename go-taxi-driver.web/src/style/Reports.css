@@ -1,0 +1,41 @@
+.container {
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    margin: 20px;
+    width: 90%;
+  }
+  
+  .header {
+    margin-bottom: 24px;
+  }
+  
+  .reports-table .table-row {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  
+  .reports-table .table-row.header {
+    font-weight: bold;
+  }
+  .table-row.text-center {
+    display: flex;
+    justify-content: center; /* This will center the content horizontally */
+    align-items: center; /* If you want to center vertically within the row, use this */
+    height: 50px; /* Give a fixed height to the row for vertical centering to take effect */
+  }
+  
+  
+  .reports-table .table-cell {
+    flex: 1;
+    padding: 290px;
+  }
+  
+  .reports-table .button-cell button {
+    /* Style your buttons here to match the theme of your app */
+  }
+  
+  /* Add more styles as per your design requirements */
+  

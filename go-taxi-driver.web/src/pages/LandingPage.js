@@ -6,8 +6,8 @@ const Landing = () => {
    return (
     <div className="container">
       <div className="dashboard-heading">
-        <h1>DASHBOARD</h1>
-        <p>Welcome to your dashboard</p>
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Dashboard</h2>
+        <p className="mb-10 text-gray-600">Welcome to your dashboard</p> 
       </div>
 
       <div className="firstContainer">

@@ -1,0 +1,89 @@
+/* GuidesFAQ.css */
+
+.container.guides-faq {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 900px;
+  }
+  
+  .header {
+    margin-bottom: 24px;
+  }
+  
+  .subheading {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .guides, .faq-item, .download-buttons {
+    margin-bottom: 16px;
+  }
+  
+  .guide, .faq-question, .faq-answer, .download-buttons button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+  
+  .faq-item {
+    border: none; /* Remove border for FAQ items */
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #f9f9f9; /* Light background for FAQ question */
+  }
+  
+  .faq-answer {
+    padding-left: 10px; /* Indent answer content */
+  }
+  
+  .read-more-button, .android-app-button, .iphone-app-button {
+    background-color: #01860f; /* Primary button background */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .iphone-app-button {
+    background-color: #007aff; /* Slightly different color for iPhone app button */
+  }
+  
+  .android-app-button svg, .iphone-app-button svg {
+    margin-right: 5px; /* Space icon and text */
+  }
+  
+  /* Hover effects */
+  .read-more-button:hover, .android-app-button:hover, .iphone-app-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container.guides-faq {
+      padding: 10px;
+      margin: 10px;
+    }
+  
+    .guide, .faq-question, .faq-answer, .download-buttons button {
+      padding: 6px;
+    }
+  
+    .subheading {
+      font-size: 1rem;
+    }
+  }
+  
