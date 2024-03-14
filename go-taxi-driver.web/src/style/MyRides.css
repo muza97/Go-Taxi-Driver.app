@@ -1,0 +1,66 @@
+.container {
+    background-color: #fff;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    margin: 100px auto; /* Ensure the margin property is properly set with units */
+    width: max-content;
+  }
+  
+  .my-rides {
+    max-width: 768px;
+    margin: 20px auto;
+  }
+  
+  .header {
+    margin-bottom: 24px;
+  }
+  
+  .rides-table {
+    width: 100%;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .table-row.header {
+    font-weight: bold;
+    border-bottom: 2px solid #eaeaea;
+    padding: 20px 0; /* Increased padding for more height */
+  }
+  
+  .table-cell {
+    flex: 1;
+    padding: 0 40px; /* Increase the side padding for more space */
+    text-align: center; /* Center the text if needed */
+  }
+  
+  /* Ensure the first and last cells align with the content's start and end */
+  .table-cell:first-child {
+    text-align: left;
+  }
+  
+  .table-cell:last-child {
+    text-align: right;
+  }
+  
+  
+  /* Additional responsive styles if needed */
+  @media (max-width: 768px) {
+    .container {
+      padding: 50px; /* Reduce padding on smaller screens */
+    }
+  
+    .table-cell {
+      padding: 0 10px; /* Reduce side padding on smaller screens */
+    }
+  
+    .table-row.header {
+      padding: 10px 0; /* Reduce height padding on smaller screens */
+    }
+    
+  }
+  

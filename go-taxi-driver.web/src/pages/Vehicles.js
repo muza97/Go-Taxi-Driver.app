@@ -34,23 +34,35 @@ const Vehicles = () => {
     <Paper style={{ padding: 16 }}>
       <Typography variant="h5">Mina Fordon</Typography>
       <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
-        <TextField
-          label="Registreringsnummer"
-          name="regNumber"
-          value={newVehicle.regNumber}
-          onChange={handleInputChange}
-          style={{ marginRight: 8 }}
-        />
-        <TextField
-          label="Bilmodell"
-          name="model"
-          value={newVehicle.model}
-          onChange={handleInputChange}
-          style={{ marginRight: 8 }}
-        />
-        <Button variant="contained" color="primary" type="submit">
-          Lägg till
-        </Button>
+       
+        <input 
+              type="Registreringsnummer"
+              name="regNumber"
+              onChange={handleInputChange}
+              value={newVehicle.regNumber}
+              placeholder="Registreringsnummer"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+            <input 
+              type="Bilmodell"
+              name="model"
+              onChange={handleInputChange}
+              value={newVehicle.model}
+              placeholder="Bilmodell"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+        
+        
+        <button
+          type="submit"
+          className="w-min flex justify-center py-2 px-8 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
+          style={{ backgroundColor: '#01860f' }}
+          onClick={handleInputChange}
+        >
+          Upload
+        </button>
       </form>
 
       <Table style={{ marginTop: 16 }}>

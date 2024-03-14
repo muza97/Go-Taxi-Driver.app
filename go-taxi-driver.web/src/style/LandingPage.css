@@ -1,0 +1,28 @@
+/* LandingPage.css */
+.container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Use a light grey background */
+  }
+  
+  .dashboard-heading {
+    text-align: center;
+    margin-bottom: 30px; /* Space below the dashboard heading */
+  }
+  
+  .firstContainer, .secondContainer {
+    display: flex;
+    justify-content: space-between; /* This will space out your items nicely */
+    margin-bottom: 30px; /* Space below each container */
+  }
+  
+  .earnings, .workHours {
+    flex: 1; /* This will make each take up equal space */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 0 10px; /* Spacing between elements */
+  }
+  
+  /* Add additional styling for typography and other elements as needed */
+  

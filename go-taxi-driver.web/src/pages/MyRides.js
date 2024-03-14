@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
+import '../style/MyRides.css'
 
 const MyRides = () => {
   const [rides, setRides] = useState([]);
@@ -24,35 +25,30 @@ const MyRides = () => {
   }, []);
 
   return (
-    <Paper style={{ padding: 16, margin: '16px 0' }}>
-      <Typography variant="h5">Mina Åkturer</Typography>
-      <TableContainer component={Paper}>
-        <Table aria-label="Åkturer">
-          <TableHead>
-            <TableRow>
-              <TableCell>Datum</TableCell>
-              <TableCell align="right">Start</TableCell>
-              <TableCell align="right">Slut</TableCell>
-              <TableCell align="right">Tid</TableCell>
-              <TableCell align="right">Intjänat</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rides.map((ride) => (
-              <TableRow key={ride.id}>
-                <TableCell component="th" scope="row">
-                  {ride.date}
-                </TableCell>
-                <TableCell align="right">{ride.start}</TableCell>
-                <TableCell align="right">{ride.end}</TableCell>
-                <TableCell align="right">{ride.time}</TableCell>
-                <TableCell align="right">{ride.earned}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+    <div className="container my-rides">
+      <div className="header text-left">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mina Åkturer</h2>
+        <p className="mb-6 text-gray-600">Your personal ride history.</p>
+      </div>
+      <div className="rides-table">
+        <div className="table-row header">
+          <div className="table-cell">Datum</div>
+          <div className="table-cell">Start</div>
+          <div className="table-cell">Slut</div>
+          <div className="table-cell">Tid</div>
+          <div className="table-cell">Intjänat</div>
+        </div>
+        {rides.map((ride, index) => (
+          <div className="table-row" key={index}>
+            <div className="table-cell">{ride.date}</div>
+            <div className="table-cell">{ride.start}</div>
+            <div className="table-cell">{ride.end}</div>
+            <div className="table-cell">{ride.time}</div>
+            <div className="table-cell">{ride.earned}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

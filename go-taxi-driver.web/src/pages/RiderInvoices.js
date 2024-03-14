@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from '@material-ui/core';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography } from '@material-ui/core';
 
 const RiderInvoices = () => {
   const [invoices, setInvoices] = useState([]);
@@ -23,34 +23,49 @@ const RiderInvoices = () => {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="fakturor tabell">
-        <TableHead>
-          <TableRow>
-            <TableCell>Datum</TableCell>
-            <TableCell>Pickup Adress</TableCell>
-            <TableCell>Summa</TableCell>
-            <TableCell>Betalningsmetod</TableCell>
-            <TableCell>Ladda ner PDF</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.id}>
-              <TableCell>{invoice.date}</TableCell>
-              <TableCell>{invoice.pickupAddress}</TableCell>
-              <TableCell>{invoice.amount}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell>
-                <Button variant="contained" color="primary" onClick={() => handleDownload(invoice.id)}>
-                  Ladda ner PDF
-                </Button>
-              </TableCell>
+    <Paper style={{ padding: 20, margin: 'auto', maxWidth: 780 }}>
+      <Typography variant="h5" style={{ marginBottom: 16 }}>Rider Invoices</Typography>
+      <TableContainer style={{ boxShadow: 'none' }}>
+        <Table aria-label="invoices table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Date</TableCell>
+              <TableCell>Pickup Address</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell>Payment Method</TableCell>
+              <TableCell>Download PDF</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {invoices.length > 0 ? (
+              invoices.map((invoice) => (
+                <TableRow key={invoice.id}>
+                  <TableCell>{invoice.date}</TableCell>
+                  <TableCell>{invoice.pickupAddress}</TableCell>
+                  <TableCell>{invoice.amount}</TableCell>
+                  <TableCell>{invoice.paymentMethod}</TableCell>
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: '#01860f', color: '#fff', textTransform: 'none' }}
+                      onClick={() => handleDownload(invoice.id)}
+                    >
+                      Download PDF
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={5} align="center">
+                  No invoices available
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
   );
 };
 

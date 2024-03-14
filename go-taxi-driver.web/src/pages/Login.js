@@ -141,7 +141,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://125f-90-230-123-227.ngrok-free.app/api/register/driver', {
+      const response = await fetch('https://125f-90-230-123-227.ngrok-free.app/api/login/driver', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ const Login = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Inloggning lyckades:', data);
+        console.log('Inloggning lyckades:', data.token);
         login(data.token); 
         navigate('/landing'); 
       } else {
