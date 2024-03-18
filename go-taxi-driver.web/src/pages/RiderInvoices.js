@@ -23,7 +23,7 @@ const RiderInvoices = () => {
   };
 
   return (
-    <Paper style={{ padding: 10, margin: 'auto', maxWidth: 740 }}>
+    <Paper style={{ padding: 30, margin: 'auto', maxWidth: 900 }}>
       <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Rider Invoices</h2>
       <TableContainer style={{ boxShadow: 'none' }}>
         <Table aria-label="invoices table">

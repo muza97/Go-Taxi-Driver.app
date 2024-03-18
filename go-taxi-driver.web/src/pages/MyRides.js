@@ -25,8 +25,9 @@ const MyRides = () => {
   }, []);
 
   return (
-    <div className="container my-rides">
-      <div className="header text-left">
+    <Paper style={{ padding: 30, margin: 'auto', maxWidth: 900 }}>
+    
+      <div className="header text-center">
         <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mina Åkturer</h2>
         <p className="mb-6 text-gray-600">Your personal ride history.</p>
       </div>
@@ -48,7 +49,8 @@ const MyRides = () => {
           </div>
         ))}
       </div>
-    </div>
+    
+    </Paper>
   );
 };
 
