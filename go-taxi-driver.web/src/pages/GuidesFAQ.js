@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Paper, Typography, Button, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemText } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AndroidIcon from '@material-ui/icons/Android';
 import AppleIcon from '@material-ui/icons/Apple';
+import axios from 'axios';
+
 import '../style/GuidesFAQ.css'
 
 const GuidesFAQ = () => {
+  useEffect(() => {
+    axios.get('http://192.168.0.157:3000/api/protected-user')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
   // Du kan ha din FAQ-data och guider i en stat eller hämta från en API
   const faqs = [
     {
