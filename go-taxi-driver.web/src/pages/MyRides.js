@@ -28,16 +28,16 @@ const MyRides = () => {
     <Paper style={{ padding: 30, margin: 'auto', maxWidth: 900 }}>
     
       <div className="header text-center">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mina Åkturer</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">My Rides</h2>
         <p className="mb-6 text-gray-600">Your personal ride history.</p>
       </div>
       <div className="rides-table">
         <div className="table-row header">
-          <div className="table-cell">Datum</div>
+          <div className="table-cell">Date</div>
           <div className="table-cell">Start</div>
-          <div className="table-cell">Slut</div>
-          <div className="table-cell">Tid</div>
-          <div className="table-cell">Intjänat</div>
+          <div className="table-cell">Ending</div>
+          <div className="table-cell">Time</div>
+          <div className="table-cell">Earned</div>
         </div>
         {rides.map((ride, index) => (
           <div className="table-row" key={index}>

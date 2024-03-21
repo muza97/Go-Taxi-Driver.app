@@ -25,7 +25,7 @@ const BalanceReports = () => {
   return (
     <div className="container balance-reports">
       <div className="header text-left">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Balansrapporter</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">BalanceReports</h2>
       </div>
       <div className="reports-table">
         {/* Replace List and ListItem with div structure */}

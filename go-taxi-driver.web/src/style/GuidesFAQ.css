@@ -39,7 +39,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    background-color: #f9f9f9; /* Light background for FAQ question */
+    background-color: #f9f9f900; /* Light background for FAQ question */
   }
   
   .faq-answer {

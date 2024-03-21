@@ -25,7 +25,7 @@ const TaxReports = () => {
   return (
     <div className="container tax-reports">
       <div className="header text-left">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Skatterapporter och Utbetalningar</h2>
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Tax reports and Payments</h2>
       </div>
       <div className="reports-table">
         {/* Loop through the taxReports and display them */}
@@ -45,13 +45,13 @@ const TaxReports = () => {
                 className="download-button"
                 onClick={() => handleDownload(report.id, 'taxReport')}
               >
-                Ladda ner Skatterapport
+                Download Taxreports
               </button>
               <button
                 className="download-button"
                 onClick={() => handleDownload(report.id, 'paySlip')}
               >
-                Ladda ner Lönespecifikation
+                Download Salary specification
               </button>
             </div>
           </div>
@@ -59,7 +59,7 @@ const TaxReports = () => {
         {taxReports.length === 0 && (
           <div className="table-row text-center">
             <div className="table-cell" colSpan="4">
-              Inga rapporter tillgängliga
+            No reports available
             </div>
           </div>
         )}

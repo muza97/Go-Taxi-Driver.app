@@ -32,7 +32,7 @@ const Vehicles = () => {
 
   return (
     <Paper style={{ padding: 16 }}>
-      <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Mina Fordon</h2>
+      <h2 className="text-3xl font-extrabold text-gray-900 mb-4">My Vehicles</h2>
       <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
        
         <input 
@@ -40,7 +40,7 @@ const Vehicles = () => {
               name="regNumber"
               onChange={handleInputChange}
               value={newVehicle.regNumber}
-              placeholder="Registreringsnummer"
+              placeholder="Licensenumber"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
@@ -49,7 +49,7 @@ const Vehicles = () => {
               name="model"
               onChange={handleInputChange}
               value={newVehicle.model}
-              placeholder="Bilmodell"
+              placeholder="Car model"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
@@ -68,8 +68,8 @@ const Vehicles = () => {
       <Table style={{ marginTop: 16 }}>
         <TableHead>
           <TableRow>
-            <TableCell>Registreringsnummer</TableCell>
-            <TableCell>Bilmodell</TableCell>
+            <TableCell>Licensenumber</TableCell>
+            <TableCell>Car model</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

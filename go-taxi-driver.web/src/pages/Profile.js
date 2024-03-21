@@ -95,10 +95,10 @@ const Profile = () => {
   <button
     type="button"
     className="w-min flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium"
-    style={{ backgroundColor: '#bab7b7', color: themeColors.text }}
+    style={{ backgroundColor: '#005ec2', color: themeColors.text }}
     onClick={handleSaveProfile}
   >
-    Spara
+    Save
   </button>
 ) : (
   <button
@@ -107,7 +107,7 @@ const Profile = () => {
     style={{ backgroundColor: '#bab7b7', color: themeColors.text }}
     onClick={toggleEditMode}
   >
-    Redigera
+    Edit
   </button>
 )}
 

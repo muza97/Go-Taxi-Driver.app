@@ -1,7 +1,9 @@
 /* LandingPage.css */
 .container {
     padding: 20px;
-    background-color: #f8f9fa; /* Use a light grey background */
+    background-color: #f8f9fa03; /* Use a light grey background */
+    display: flex;
+    flex-direction: column;
   }
   
   .dashboard-heading {
@@ -13,6 +15,7 @@
     display: flex;
     justify-content: space-between; /* This will space out your items nicely */
     margin-bottom: 30px; /* Space below each container */
+    justify-content: center;
   }
   
   .earnings, .workHours {
