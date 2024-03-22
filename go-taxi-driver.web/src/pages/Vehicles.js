@@ -57,9 +57,11 @@ const Vehicles = () => {
         
         <button
           type="submit"
-          className="w-min flex justify-center py-2 px-8 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
+          className="w-min flex justify-center py-3 px-8 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
           style={{ backgroundColor: '#01860f' }}
-          onClick={handleInputChange}
+          onClick={() => {
+            alert('Car saved!');
+          }}
         >
           Upload
         </button>

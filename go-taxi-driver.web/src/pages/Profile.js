@@ -95,7 +95,7 @@ const Profile = () => {
   <button
     type="button"
     className="w-min flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium"
-    style={{ backgroundColor: '#005ec2', color: themeColors.text }}
+    style={{ backgroundColor: '#008000', color: themeColors.text }}
     onClick={handleSaveProfile}
   >
     Save
