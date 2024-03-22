@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, TextField, Button, Typography, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import '../style/Vehicles.css'
 
 const Vehicles = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -28,60 +29,59 @@ const Vehicles = () => {
     // Om lyckad, uppdatera fordonlistan
     // fetchVehicles();
     setNewVehicle({ regNumber: '', model: '' }); // Återställ formuläret
+    alert('Vehicle added successfully!');
+
   };
 
   return (
-    <Paper style={{ padding: 16 }}>
-      <h2 className="text-3xl font-extrabold text-gray-900 mb-4">My Vehicles</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
-       
-        <input 
-              type="Registreringsnummer"
-              name="regNumber"
-              onChange={handleInputChange}
-              value={newVehicle.regNumber}
-              placeholder="Licensenumber"
-              className="w-full p-3 border border-gray-300 rounded-md"
-              required
-            />
-            <input 
-              type="Bilmodell"
-              name="model"
-              onChange={handleInputChange}
-              value={newVehicle.model}
-              placeholder="Car model"
-              className="w-full p-3 border border-gray-300 rounded-md"
-              required
-            />
-        
-        
-        <button
-          type="submit"
-          className="w-min flex justify-center py-2 px-8 border border-transparent rounded-md shadow-sm text-sm font-medium text-white"
-          style={{ backgroundColor: '#01860f' }}
-          onClick={handleInputChange}
-        >
-          Upload
-        </button>
-      </form>
+    <div className="container vehicles">
+      <div className="header text-center">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">My Vehicles</h2>
+        <p className="mb-6 text-gray-600">Manage your vehicle information.</p>
+      </div>
+      <form className="vehicle-form" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="regNumber" className="form-label">License Number</label>
+          <input 
+            type="text"
+            id="regNumber"
+            name="regNumber"
+            onChange={handleInputChange}
+            value={newVehicle.regNumber}
+            className="form-input"
+            placeholder="LicenseNumber"
+            required
 
-      <Table style={{ marginTop: 16 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Licensenumber</TableCell>
-            <TableCell>Car model</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {vehicles.map((vehicle) => (
-            <TableRow key={vehicle.regNumber}>
-              <TableCell>{vehicle.regNumber}</TableCell>
-              <TableCell>{vehicle.model}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="model" className="form-label">Car Model</label>
+          <input 
+            type="text"
+            id="model"
+            name="model"
+            onChange={handleInputChange}
+            value={newVehicle.model}
+            className="form-input"
+            placeholder="Car Model"
+            required
+          />
+        </div>
+        {/* Adjust the button to be outside the input groups for alignment */}
+        <Button type="submit" className="submit-button" style={{ backgroundColor: '#01860f', color: 'white', flexBasis: '16%', marginTop: '30px'}}>
+          Add Vehicle
+        </Button>
+      </form>
+      <div className="vehicles-table">
+        {/* Table rows for listing vehicles */}
+        {vehicles.map((vehicle, index) => (
+          <div className="table-row" key={index}>
+            <div className="table-cell">{vehicle.regNumber}</div>
+            <div className="table-cell">{vehicle.model}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

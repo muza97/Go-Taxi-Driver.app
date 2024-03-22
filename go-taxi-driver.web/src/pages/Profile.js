@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper, Typography, TextField, Button } from '@material-ui/core';
 import '../dist/styles.css'; 
 import { themeColors } from '../theme/themeColors';
@@ -7,12 +7,51 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const Profile = () => {
   const [user, setUser] = useState({
-    name: 'User Name',
-    email: 'User@example.com',
-    phoneNumber: '0701234567',
-    licenseNumber: 'ABC123'
+    name: '',
+    email: '',
+    phoneNumber: '',
+    licenseNumber: ''
   });
   const [editMode, setEditMode] = useState(false);
+
+  /*useEffect(() => {
+    const fetchUserData = async () => {
+      console.log('Attempting to fetch user data...');
+      try {
+        const token = localStorage.getItem('driverToken');
+        console.log('Token found:', token);
+  
+        if (!token) {
+          console.log('No token found in localStorage.');
+          return;
+        }
+  
+        console.log('Sending request to backend with token:', token);
+        const response = await fetch('http://localhost:3000/api/driver/profile', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+  
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch user data. Status: ${response.status}`);
+        }
+  
+        const userData = await response.json();
+        console.log('User data retrieved successfully:', userData);
+        setUser(userData);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+  }, []);*/
+  
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,11 +65,47 @@ const Profile = () => {
     setEditMode(!editMode);
   };
 
-  const handleSaveProfile = () => {
-    // Logik för att spara användaruppgifter, t.ex. skicka till backend
-    alert('Profil uppdaterad!');
-    setEditMode(false); // Stäng av redigeringsläge
-  };
+  const handleSaveProfile = async () => {
+    const token = localStorage.getItem('driverToken');
+    const profileData = {
+        name: user.name,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        licenseNumber: user.licenseNumber
+    };
+
+    console.log("Sending profile update with data:", profileData); // Log data being sent
+
+    const requestOptions = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(profileData)
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/api/profile', requestOptions);
+
+        console.log("Response status:", response.status); // Log response status
+
+        if (!response.ok) {
+            throw new Error('Failed to update profile');
+        }
+
+        const updatedUser = await response.json();
+        console.log("Profile updated successfully:", updatedUser); // Log the response
+
+        setUser(updatedUser);
+        setEditMode(false);
+        alert('Profile updated successfully!');
+    } catch (error) {
+        console.error("Profile update error:", error);
+        alert(`Failed to update profile: ${error.message}`);
+    }
+};
+
 
   return (
     <Paper elevation={0} style={{ padding: 16, margin: '16px 0' }}>
