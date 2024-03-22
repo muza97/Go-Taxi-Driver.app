@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Typography } from '@material-ui/core';
+import '../style/RiderInvoices.css'
 
 const RiderInvoices = () => {
   const [invoices, setInvoices] = useState([]);
@@ -23,50 +24,45 @@ const RiderInvoices = () => {
   };
 
   return (
-    <Paper style={{ padding: 30, margin: 'auto', maxWidth: 900 }}>
-      <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Rider Invoices</h2>
-      <TableContainer style={{ boxShadow: 'none' }}>
-        <Table aria-label="invoices table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell>Pickup Address</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Payment Method</TableCell>
-              <TableCell>Download PDF</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {invoices.length > 0 ? (
-              invoices.map((invoice) => (
-                <TableRow key={invoice.id}>
-                  <TableCell>{invoice.date}</TableCell>
-                  <TableCell>{invoice.pickupAddress}</TableCell>
-                  <TableCell>{invoice.amount}</TableCell>
-                  <TableCell>{invoice.paymentMethod}</TableCell>
-                  <TableCell>
-                    <Button
-                      variant="contained"
-                      style={{ backgroundColor: '#01860f', color: '#fff', textTransform: 'none' }}
-                      onClick={() => handleDownload(invoice.id)}
-                    >
-                      Download PDF
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={5} align="center">
-                  No invoices available
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+    <div className="container rider-invoices">
+      <div className="header text-center">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Rider Invoices</h2>
+        <p className="mb-6 text-gray-600">A summary of your rider invoices.</p>
+      </div>
+      <div className="invoices-table">
+        <div className="table-row header">
+          <div className="table-cell">Date</div>
+          <div className="table-cell">Pickup Address</div>
+          <div className="table-cell">Amount</div>
+          <div className="table-cell">Payment Method</div>
+          <div className="table-cell">Download PDF</div>
+        </div>
+        {invoices.length > 0 ? invoices.map((invoice, index) => (
+          <div className="table-row" key={index}>
+            <div className="table-cell">{invoice.date}</div>
+            <div className="table-cell">{invoice.pickupAddress}</div>
+            <div className="table-cell">{invoice.amount}</div>
+            <div className="table-cell">{invoice.paymentMethod}</div>
+            <div className="table-cell">
+              <button
+                onClick={() => handleDownload(invoice.id)}
+                className="download-button"
+              >
+                Download PDF
+              </button>
+            </div>
+          </div>
+        )) : (
+          <div className="table-row no-invoices">
+          <div className="table-cell">
+          <div className="no-invoices-message">No invoices available</div>
+        </div>
+      </div>
+        )}
+      </div>
+    </div>
   );
 };
 
 export default RiderInvoices;
+

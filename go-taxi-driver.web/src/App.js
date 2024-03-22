@@ -74,7 +74,7 @@ import BalanceReports from './pages/BalanceReports.js';
 import TaxReports from './pages/TaxReports.js';
 import GuidesFAQ from './pages/GuidesFAQ.js';
 
-import Contact from './/pages/Contact';
+import Contact from './pages/Contact';
 import './App.css'
 import './dist/styles.css'; 
 import { AuthProvider } from './auth/AuthContext.js';

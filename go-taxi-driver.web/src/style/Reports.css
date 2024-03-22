@@ -4,7 +4,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
     margin: 20px;
-    width: 90%;
+    width: 80%;
   }
   
   .header {
@@ -30,7 +30,9 @@
   
   .reports-table .table-cell {
     flex: 1;
-    padding: 290px;
+    padding: 470px;
+    align-items: center;
+    justify-content: center;
   }
   
   .reports-table .button-cell button {

@@ -1,0 +1,37 @@
+.container.rider-invoices {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+    border-radius: 8px;
+  }
+  
+  .invoices-table {
+    width: 100%;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  
+  .table-row.header {
+    font-weight: bold;
+    border-bottom: 2px solid #eaeaea;
+  }
+  
+  .table-cell {
+    flex: auto;
+    padding: 0 10px;
+  }
+  .no-invoices .table-cell {
+    flex: 1;
+  }
+  
+  .no-invoices-message {
+    text-align: center; 
+    width: 100%; 
+  }
+  /* Add any additional styling as needed */
+  
