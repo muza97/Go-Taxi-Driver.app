@@ -224,7 +224,7 @@ const Login = () => {
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium"
               style={{ backgroundColor: themeColors.bgColor(1), color: themeColors.text }}
             >
-              Log in
+              Sign in
             </button>
           </form>
           <div className="text-center">
