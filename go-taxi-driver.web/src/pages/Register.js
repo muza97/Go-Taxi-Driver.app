@@ -9,9 +9,7 @@ const Register = () => {
     name: '',
     email: '',
     password: '',
-    phoneNumber: '',
-    licenseNumber: '',
-    vehicle: ''
+    phone_number: '',
   });
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
@@ -32,7 +30,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://125f-90-230-123-227.ngrok-free.app/api/register/driver', {
+      const response = await fetch('https://api-hdzvzie4ya-uc.a.run.app/api/register/driver', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,6 +76,15 @@ const Register = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Input fields */}
             <input
+              type="name"
+              name="name"
+              onChange={handleChange}
+              value={account.name}
+              placeholder="Name"
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            />
+            <input
               type="email"
               name="email"
               onChange={handleChange}
@@ -96,29 +103,11 @@ const Register = () => {
               required
             />
             <input
-              type="phoneNumber"
-              name="phoneNumber"
+              type="phone_number"
+              name="phone_number"
               onChange={handleChange}
-              value={account.phoneNumber}
+              value={account.phone_number}
               placeholder="Phonenumber"
-              className="w-full p-3 border border-gray-300 rounded-md"
-              required
-            />
-            <input
-              type="licenseNumber"
-              name="licenseNumber"
-              onChange={handleChange}
-              value={account.licenseNumber}
-              placeholder="LicenseNumber"
-              className="w-full p-3 border border-gray-300 rounded-md"
-              required
-            />
-            <input
-              type="vehicle"
-              name="vehicle"
-              onChange={handleChange}
-              value={account.vehicle}
-              placeholder="Vehicle"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
             />
