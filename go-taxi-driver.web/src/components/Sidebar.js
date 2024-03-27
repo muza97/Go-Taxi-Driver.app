@@ -11,13 +11,64 @@ import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import { useAuth } from '../auth/AuthContext';
+import { useState, useEffect } from 'react';
 
 
 const Sidebar = () => {
-  const user = {
+  /*const user = {
     name: 'User\'s Full Name',
     avatar: process.env.PUBLIC_URL + '/ayo-ogunseinde-sibVwORYqs0-unsplash.jpg'// replace with actual path to user's avatar image
+  };*/
+
+  const{user,setUser} = useAuth();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const defaultAvatar = process.env.PUBLIC_URL + '/ayo-ogunseinde-sibVwORYqs0-unsplash.jpg';
+
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('avatar', file);
+      setSelectedImage(URL.createObjectURL(file));
+  
+      try {
+        const response = await fetch('http://localhost:3000/api/driver/upload-avatar', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('driverToken')}`,
+            // 'Content-Type': 'multipart/form-data' kommer automatiskt sättas av webbläsaren
+          },
+          body: formData,
+        });
+  
+        if (!response.ok) {
+          throw new Error('Problem with uploading the image');
+        }
+  
+        const updatedUser = await response.json();
+        setUser(updatedUser); // Uppdatera användarstatet med den nya informationen
+        alert('Image uploaded successfully!');
+      } catch (error) {
+        console.error('Error:', error);
+        alert(`Failed to upload image: ${error.message}`);
+      }
+    }
   };
+    const triggerFileInput = () => {
+    document.getElementById('imageInput').click();
+  };
+
+  useEffect(() => {
+    return () => {
+      if (selectedImage) {
+        URL.revokeObjectURL(selectedImage.preview);
+        setSelectedImage(null);
+      }
+    };
+  }, [selectedImage]);
+ 
+
 
   return (
     <div className="sidebar">
@@ -26,10 +77,17 @@ const Sidebar = () => {
     <Link to="/" className="font-semibold text-xl text-gray-900">City Cab</Link>
   </div>
 
-      <div className="user-profile">
-        <img src={user.avatar} alt="Profile" className="profile-pic" />
+      <div className="user-profile"onClick={triggerFileInput}>
+      <img src={selectedImage || user?.avatar || defaultAvatar} alt="Profile" className="profile-pic" />
+        <input
+          id="imageInput"
+          type="file"
+          accept="image/*"
+          hidden
+          onChange={handleImageChange}
+        />
         <div className="user-info">
-          <p className="user-name">{user.name}</p>
+          <p className="user-name">{user?.name}</p>
         </div>
         </div>
       <Link to="/landing"><HomeIcon /> Home</Link>

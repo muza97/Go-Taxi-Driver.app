@@ -3,60 +3,35 @@ import { Paper, Typography, TextField, Button } from '@material-ui/core';
 import '../dist/styles.css'; 
 import { themeColors } from '../theme/themeColors';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext';
 
 
 const Profile = () => {
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    phoneNumber: '',
-    licenseNumber: ''
-  });
-  const [editMode, setEditMode] = useState(false);
+  const { user, setUser } = useAuth();
+  console.log('Current user in Profile component:', user); // Logga aktuell användare
 
-  /*useEffect(() => {
-    const fetchUserData = async () => {
-      console.log('Attempting to fetch user data...');
-      try {
-        const token = localStorage.getItem('driverToken');
-        console.log('Token found:', token);
-  
-        if (!token) {
-          console.log('No token found in localStorage.');
-          return;
-        }
-  
-        console.log('Sending request to backend with token:', token);
-        const response = await fetch('http://localhost:3000/api/driver/profile', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-  
-        console.log('Response status:', response.status);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch user data. Status: ${response.status}`);
-        }
-  
-        const userData = await response.json();
-        console.log('User data retrieved successfully:', userData);
-        setUser(userData);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-  
-    fetchUserData();
-  }, []);*/
-  
-  
+  const [editMode, setEditMode] = useState(false);
+  const [profileData, setProfileData] = useState({
+    name: user.name || '',
+    email: user.email || '',
+    phone_number: user.phone_number || '',
+    license_number: user.license_number || '',
+  });
+
+  useEffect(() => {
+    console.log('User data updated in Profile component:', user); // Logga när användardata uppdateras
+    setProfileData({
+      name: user.name || '',
+      email: user.email || '',
+      phone_number: user.phone_number || '',
+      license_number: user.license_number || '',
+    });
+  }, [user]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser((prevUser) => ({
-      ...prevUser,
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
       [name]: value,
     }));
   };
@@ -65,46 +40,48 @@ const Profile = () => {
     setEditMode(!editMode);
   };
 
-  const handleSaveProfile = async () => {
+  const handleSaveProfile = async (e) => {
+    e.preventDefault(); // Lägg till detta för att förhindra att sidan laddas om
     const token = localStorage.getItem('driverToken');
-    const profileData = {
-        name: user.name,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        licenseNumber: user.licenseNumber
+  
+    const profileDataToSend = {
+      name: profileData.name,
+      email: profileData.email,
+      phone_number: profileData.phone_number,
+      license_number: profileData.license_number
     };
-
-    console.log("Sending profile update with data:", profileData); // Log data being sent
-
+  
+    console.log("Sending profile update with data:", profileDataToSend); // Logga data som skickas
+  
     const requestOptions = {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(profileData)
+      method: 'PATCH',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(profileDataToSend)
     };
-
+  
     try {
-        const response = await fetch('http://localhost:3000/api/profile', requestOptions);
-
-        console.log("Response status:", response.status); // Log response status
-
-        if (!response.ok) {
-            throw new Error('Failed to update profile');
-        }
-
-        const updatedUser = await response.json();
-        console.log("Profile updated successfully:", updatedUser); // Log the response
-
-        setUser(updatedUser);
-        setEditMode(false);
-        alert('Profile updated successfully!');
+      const response = await fetch('http://localhost:3000/api/profile', requestOptions);
+  
+      console.log("Response status:", response.status); // Logga svarstatus
+  
+      if (!response.ok) {
+          throw new Error('Failed to update profile');
+      }
+  
+      const updatedUser = await response.json();
+      console.log("Profile updated successfully:", updatedUser); // Logga det uppdaterade svaret
+  
+      setUser(updatedUser); // Sätt det uppdaterade användarobjektet i kontexten
+      setEditMode(false); // Stäng av redigeringsläget
+      alert('Profile updated successfully!');
     } catch (error) {
-        console.error("Profile update error:", error);
-        alert(`Failed to update profile: ${error.message}`);
+      console.error("Profile update error:", error);
+      alert(`Failed to update profile: ${error.message}`);
     }
-};
+  };
 
 
   return (
@@ -124,7 +101,7 @@ const Profile = () => {
               type="name"
               name="name"
               onChange={handleInputChange}
-              value={user.name}
+              value={profileData.name}
               placeholder="Name"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
@@ -136,7 +113,7 @@ const Profile = () => {
               type="email"
               name="email"
               onChange={handleInputChange}
-              value={user.email}
+              value={profileData.email}
               placeholder="E-mail"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
@@ -145,10 +122,10 @@ const Profile = () => {
             <div>
             <label htmlFor="phoneNumber" className="block text-sm font-semibold text-gray-700">Phonenumber</label>
         <input
-              type="phoneNumber"
-              name="phoneNumber"
+              type="phone_number"
+              name="phone_number"
               onChange={handleInputChange}
-              value={user.phoneNumber}
+              value={profileData.phone_number}
               placeholder="Phonenumber"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
@@ -157,10 +134,10 @@ const Profile = () => {
             <div>
             <label htmlFor="licenseNumber" className="block text-sm font-semibold text-gray-700">Licensenumber</label>
         <input
-              type="licenseNumber"
-              name="licenseNumber"
+              type="license_number"
+              name="license_number"
               onChange={handleInputChange}
-              value={user.licenseNumber}
+              value={profileData.license_number}
               placeholder="Licensenumber"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
