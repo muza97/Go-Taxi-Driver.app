@@ -13,20 +13,22 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchUser = async () => {
-    console.log('Fetching user with token:', authToken); // Logga när vi försöker hämta användaren
-    if (authToken) {
-      try {
-        const userProfile = await getUserProfile(authToken);
-        console.log('Fetched user profile:', userProfile); // Logga hämtad användarprofil
-        setUser(userProfile);
-      } catch (error) {
-        console.error('Problem fetching user profile:', error);
-      }finally {
-        setLoading(false); // Indikera att laddningen är klar
-      }
-  
+    if (!authToken) {
+      setLoading(false);
+      return;
+    }
+    console.log('Fetching user with token:', authToken);
+    try {
+      const userProfile = await getUserProfile(authToken);
+      console.log('Fetched user profile:', userProfile);
+      setUser(userProfile);
+    } catch (error) {
+      console.error('Problem fetching user profile:', error);
+    } finally {
+      setLoading(false);
     }
   };
+  
 
   useEffect(() => {
     fetchUser();
@@ -47,12 +49,37 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUser(null); // Also reset the user state
   };
+  const updateAvatar = async (imageFile) => {
+    if (!authToken) return;
+    const formData = new FormData();
+    formData.append('avatar', imageFile);
+  
+    try {
+      const response = await fetch('http://localhost:3000/api/upload-avatar', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+        },
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Upload failed with status: ${response.status}`);
+      }
+  
+      const updatedUser = await response.json();
+      setUser((currentUser) => ({ ...currentUser, avatar: updatedUser.avatar }));
+    } catch (error) {
+      console.error('Error uploading avatar:', error);
+    }
+  };
 
   return (
-    <AuthContext.Provider value={{ authToken, user, login, logout, setUser }}>
+    <AuthContext.Provider value={{ authToken, user, login, logout, setUser,updateAvatar }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
 
 export const useAuth = () => useContext(AuthContext);

@@ -171,7 +171,7 @@ const Login = () => {
         <button
           className="font-bold py-2 px-4 rounded"
           style={{ backgroundColor: themeColors.bgColor(1), color: themeColors.text }}
-          onClick={() => navigate('/landing')}
+          onClick={() => navigate('/')}
         >
           Log in
         </button>

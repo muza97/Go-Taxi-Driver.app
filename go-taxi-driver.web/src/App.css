@@ -75,7 +75,26 @@
 .sidebar .user-info .user-email {
   color: #333; /* This is a dark color for the text */
   text-align: between; /* Center the text */
+  
 }
+/* Lägg detta i din app.css */
+.sidebar .user-info {
+  display: flex;
+  align-items: center; /* Centrerar elementen vertikalt */
+  gap: 5px; /* Skapar utrymme mellan namn och ikon */
+}
+
+.sidebar .user-info .user-name {
+  margin: 0; /* Tar bort default-marginal om det finns */
+  color: #333; /* Mörk färg för text */
+  /* text-align: between; är inte en giltig egenskap för text-align */
+}
+
+.online-icon {
+  color: green; /* Grön färg för ikonen som visar att användaren är online */
+  font-size: 1rem; /* Ändrar storleken på ikonen */
+}
+
 
 
 .logo-container {
