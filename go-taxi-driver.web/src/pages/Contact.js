@@ -57,7 +57,9 @@ function Contact() {
 
         <button type="submit">Send Message</button>
       </form>
-      <div className='number'> <h2>call this number for emergenices: 070 123 45 67</h2> </div>
+      <div className="number">
+      <h2 className="text-0xl font-semibold text-gray-800 mb-4">Call this number for emergenices: 070 123 45 67</h2>
+         </div>
     </div>
   );
 }

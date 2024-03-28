@@ -63,7 +63,7 @@ const Profile = () => {
     };
   
     try {
-      const response = await fetch('http://localhost:3000/api/profile', requestOptions);
+      const response = await fetch('https://api-g36q5boh2q-uc.a.run.app/api/profile', requestOptions);
   
       console.log("Response status:", response.status); // Logga svarstatus
   
@@ -72,11 +72,14 @@ const Profile = () => {
       }
   
       const updatedUser = await response.json();
-      console.log("Profile updated successfully:", updatedUser); // Logga det uppdaterade svaret
-  
-      setUser(updatedUser); // Sätt det uppdaterade användarobjektet i kontexten
-      setEditMode(false); // Stäng av redigeringsläget
+      console.log("Profile updated successfully:", updatedUser);
+      setUser(prevState => ({
+      ...prevState,
+      ...updatedUser // detta antar att du får tillbaka det uppdaterade användarobjektet
+      }));
+      setEditMode(false);
       alert('Profile updated successfully!');
+
     } catch (error) {
       console.error("Profile update error:", error);
       alert(`Failed to update profile: ${error.message}`);
@@ -117,10 +120,11 @@ const Profile = () => {
               placeholder="E-mail"
               className="w-full p-3 border border-gray-300 rounded-md"
               required
+              disabled={true}
             />
             </div>
             <div>
-            <label htmlFor="phoneNumber" className="block text-sm font-semibold text-gray-700">Phonenumber</label>
+            <label htmlFor="phone_number" className="block text-sm font-semibold text-gray-700">Phonenumber</label>
         <input
               type="phone_number"
               name="phone_number"
@@ -132,7 +136,7 @@ const Profile = () => {
             />
             </div>
             <div>
-            <label htmlFor="licenseNumber" className="block text-sm font-semibold text-gray-700">Licensenumber</label>
+            <label htmlFor="license_number" className="block text-sm font-semibold text-gray-700">Licensenumber</label>
         <input
               type="license_number"
               name="license_number"
