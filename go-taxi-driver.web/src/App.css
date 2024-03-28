@@ -81,13 +81,14 @@
 .sidebar .user-info {
   display: flex;
   align-items: center; /* Centrerar elementen vertikalt */
-  gap: 5px; /* Skapar utrymme mellan namn och ikon */
+  gap: 1px; /* Skapar utrymme mellan namn och ikon */
 }
 
 .sidebar .user-info .user-name {
   margin: 0; /* Tar bort default-marginal om det finns */
   color: #333; /* Mörk färg för text */
-  /* text-align: between; är inte en giltig egenskap för text-align */
+  text-align: between; /* är inte en giltig egenskap för text-align */
+  font-weight: 650;
 }
 
 .online-icon {

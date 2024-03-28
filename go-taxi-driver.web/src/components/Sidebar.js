@@ -25,7 +25,7 @@ const Sidebar = () => {
   const{user,setUser,updateAvatar} = useAuth();
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const defaultAvatar = process.env.PUBLIC_URL + '/ayo-ogunseinde-sibVwORYqs0-unsplash.jpg';
+  const defaultAvatar = process.env.PUBLIC_URL + '/standardprofilephoto.jpg';
   const imageUrl = user && user.avatar ? `http://localhost:3000${user.avatar}` : defaultAvatar;
 
   const handleImageChange = async (e) => {
@@ -72,7 +72,7 @@ const Sidebar = () => {
          <p className="user-name">{user?.name}</p>
            { (
           <span className="online-icon">
-          <FiberManualRecordIcon style={{ fontSize: '0.8rem' }} />
+          <FiberManualRecordIcon style={{ fontSize: '0.7rem' }} />
         </span>
          )}
        </div>
