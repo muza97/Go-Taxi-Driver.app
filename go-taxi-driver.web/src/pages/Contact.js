@@ -15,12 +15,27 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //handle the submission like to an contact email
-    console.log(formData);
-    alert('Thank you for your message!');
+
+    //'https://api-g36q5boh2q-uc.a.run.app/api/send-email'
+  
+    // Assume your backend endpoint is /send-email
+    const response = await fetch('http://localhost:3000/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+  
+    if (response.ok) {
+      alert('Thank you for your message!');
+    } else {
+      alert('There was a problem sending your message.');
+    }
   };
+  
 
   return (
     <div className="contact-container">
