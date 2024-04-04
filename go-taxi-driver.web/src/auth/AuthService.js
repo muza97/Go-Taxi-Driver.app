@@ -2,7 +2,7 @@
 
 const getUserProfile = async (token) => {
     console.log('getUserProfile called with token:', token); // Logga anropet med token
-    const response = await fetch('http://localhost:3000/api/driver/profile', {
+    const response = await fetch('https://api-g36q5boh2q-uc.a.run.app/api/driver/profile', {
       headers: {
         'Authorization': `Bearer ${token}`,
       },

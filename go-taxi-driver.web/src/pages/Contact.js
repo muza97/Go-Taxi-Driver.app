@@ -15,26 +15,45 @@ function Contact() {
     }));
   };
 
+  //'http://localhost:3000/api/send-email'
+  //'https://api-g36q5boh2q-uc.a.run.app/api/send-email'
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    //'https://api-g36q5boh2q-uc.a.run.app/api/send-email'
   
-    // Assume your backend endpoint is /send-email
-    const response = await fetch('http://localhost:3000/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    });
+    // Retrieve the token from localStorage
+    const token = localStorage.getItem('driverToken');
+    if (!token) {
+      alert('You are not logged in.');
+      return;
+    }
   
-    if (response.ok) {
-      alert('Thank you for your message!');
-    } else {
-      alert('There was a problem sending your message.');
+    // The API endpoint for sending emails
+    const apiEndpoint = 'http://localhost:3000/api/send-email';
+  
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Add the token in the Authorization header
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        alert('Thank you for your message!');
+      } else {
+        const errorMessage = await response.text();
+        console.error('Error sending message:', errorMessage);
+        alert('There was a problem sending your message.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while sending your message.');
     }
   };
+  
   
 
   return (

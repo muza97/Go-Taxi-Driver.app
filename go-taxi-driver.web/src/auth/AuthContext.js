@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     formData.append('avatar', imageFile);
   
     try {
-      const response = await fetch('http://localhost:3000/api/upload-avatar', {
+      const response = await fetch('https://api-g36q5boh2q-uc.a.run.app/api/upload-avatar', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${authToken}`,
