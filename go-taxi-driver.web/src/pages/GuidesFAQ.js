@@ -38,8 +38,8 @@ const GuidesFAQ = () => {
         <div className="guides">
           <div className="guide">
             <span>Driver App Step-by-Step tutorial</span>
-            <button className="read-more-button">Read More</button>
           </div>
+          <button className="read-more-button">Read More</button>
           {/* Add more guides as needed */}
         </div>
 
