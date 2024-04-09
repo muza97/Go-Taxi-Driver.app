@@ -89,7 +89,7 @@ function Contact() {
           required
         />
 
-        <button type="submit">Send Message</button>
+<button type="submit" style={{ backgroundColor: '#01860f', color: 'white' }}>Send Message</button>
       </form>
       <div className="number">
       <h2 className="text-0xl font-semibold text-gray-800 mb-4">Call this number for emergenices: 070 123 45 67</h2>
