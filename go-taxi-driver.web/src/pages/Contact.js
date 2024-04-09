@@ -15,12 +15,46 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  //'http://localhost:3000/api/send-email'
+  //'https://api-g36q5boh2q-uc.a.run.app/api/send-email'
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    //handle the submission like to an contact email
-    console.log(formData);
-    alert('Thank you for your message!');
+  
+    // Retrieve the token from localStorage
+    const token = localStorage.getItem('driverToken');
+    if (!token) {
+      alert('You are not logged in.');
+      return;
+    }
+  
+    // The API endpoint for sending emails
+    const apiEndpoint = 'http://localhost:3000/api/send-email';
+  
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Add the token in the Authorization header
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        alert('Thank you for your message!');
+      } else {
+        const errorMessage = await response.text();
+        console.error('Error sending message:', errorMessage);
+        alert('There was a problem sending your message.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while sending your message.');
+    }
   };
+  
+  
 
   return (
     <div className="contact-container">
@@ -57,7 +91,9 @@ function Contact() {
 
         <button type="submit">Send Message</button>
       </form>
-      <div className='number'> <h2>call this number for emergenices: 070 123 45 67</h2> </div>
+      <div className="number">
+      <h2 className="text-0xl font-semibold text-gray-800 mb-4">Call this number for emergenices: 070 123 45 67</h2>
+         </div>
     </div>
   );
 }
