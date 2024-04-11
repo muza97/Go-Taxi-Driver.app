@@ -20,19 +20,30 @@
   .reports-table .table-row.header {
     font-weight: bold;
   }
-  .table-row.text-center {
+  /*.table-row.text-center {
     display: flex;
-    justify-content: center; /* This will center the content horizontally */
-    align-items: center; /* If you want to center vertically within the row, use this */
-    height: 50px; /* Give a fixed height to the row for vertical centering to take effect */
-  }
+    justify-content: center; 
+    align-items: center; 
+    height: 50px;
   
+  
+  /*.reports-table .table-cell {
+    flex: 1;
+    padding: 470px; 
+    align-items: center;
+    justify-content: center;
+  } */
   
   .reports-table .table-cell {
     flex: 1;
-    padding: 470px;
-    align-items: center;
-    justify-content: center;
+    text-align: center; /* Centrera texten horisontellt */
+  }
+  
+  .table-row.text-center {
+    display: flex;
+    justify-content: center; /* Centrera innehållet horisontellt */
+    align-items: center; /* Centrera innehållet vertikalt */
+    height: auto; /* Återgå till automatisk höjd för raderna */
   }
   
   .reports-table .button-cell button {
